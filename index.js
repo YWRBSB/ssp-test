@@ -9,24 +9,26 @@ const http = require('http'), //This module provides the HTTP server functionali
 const router = express();
 const server = http.createServer(router);
 
+router.use(express.static(path.resolve(__dirname,'views'))); //We serve static content from "views" folder
+
 router.get('/', function(req, res){
 
     res.writeHead(200, {'Content-Type' : 'text/html'});
 
     let xml = fs.readFileSync('PaddysCafe.xml', 'utf8'),
-        xsl = fs.readFileSync('PaddyCafes.xsl', 'utf8');
+        xsl = fs.readFileSync('PaddysCafe.xsl', 'utf8');
     
     
     console.log(xml);
     console.log(xsl);
     
     let doc = xmlParse(xml),
-    styleSheet = xmlParse(xsl);     
+    stylesheet = xmlParse(xsl);     
 
     console.log(doc);
     console.log(stylesheet);
         
-    let result = xsltProcess(doc, styleSheet);
+    let result = xsltProcess(doc, stylesheet);
     
     console.log(result);
 
