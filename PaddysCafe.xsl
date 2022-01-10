@@ -4,9 +4,6 @@
     <table id="menuTable" border="1" class="indent">
         <thead>
             <tr>
-                <th colspan="3">Paddy's Cafe Menu</th>
-            </tr>
-            <tr>
                 <th>Select</th>
                 <th>Item</th>
                 <th>Price</th>
@@ -20,7 +17,7 @@
                     </td>
                 </tr>
                 <xsl:for-each select="entry">
-                    <tr>
+                    <tr id="{position()}">
                         <xsl:attribute name="vegetarian">
                             <xsl:value-of select="boolean(@vegetarian)" />
                         </xsl:attribute>
@@ -39,3 +36,4 @@
         </tbody>
     </table>
 </xsl:template>
+</xsl:stylesheet>
