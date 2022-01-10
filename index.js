@@ -6,7 +6,34 @@ const http = require('http'), //This module provides the HTTP server functionali
       xsltProcess = require('xslt-processor').xsltProcess, //The same module allows us to uitlise XSL Transformations
       xml2js = require('xml2js'); //This module does XML <-> JSON conversion
 
-      
+const router = express();
+const server = http.createServer(router);
+
+router.get('/', function(req, res){
+
+    res.writeHead(200, {'Content-Type' : 'text/html'});
+
+    let xml = fs.readFileSync('PaddysCafe.xml', 'utf8'),
+        xsl = fs.readFileSync('PaddyCafe.xsl', 'utf8');
+
+    let doc = xmlParse(xml),
+        styleSheet = xmlParse(xsl);     
+        
+    let result = xsltProcess(doc, styleSheet);
+    
+    res.end(result.toString());
+})      
+
+
+
+// Allows the server to "listen" to the requests 
+server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
+    
+    const addr = server.address();
+    console.log("Server listening at", addr.address + ":" + addr.port)
+}     
+
+
 
 
 
