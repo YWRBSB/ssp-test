@@ -1,0 +1,19 @@
+{
+  "name": "ssp-proj",
+  "version": "0.0.1",
+  "description": "practical classwork",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YWRBSB/ssp-test.git"
+  },
+  "author": "Yuri Ribeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YWRBSB/ssp-test/issues"
+  },
+  "homepage": "https://github.com/YWRBSB/ssp-test#readme"
+}
