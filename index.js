@@ -14,13 +14,22 @@ router.get('/', function(req, res){
     res.writeHead(200, {'Content-Type' : 'text/html'});
 
     let xml = fs.readFileSync('PaddysCafe.xml', 'utf8'),
-        xsl = fs.readFileSync('PaddyCafe.xsl', 'utf8');
-
+        xsl = fs.readFileSync('PaddyCafes.xsl', 'utf8');
+    
+    
+    console.log(xml);
+    console.log(xsl);
+    
     let doc = xmlParse(xml),
-        styleSheet = xmlParse(xsl);     
+    styleSheet = xmlParse(xsl);     
+
+    console.log(doc);
+    console.log(stylesheet);
         
     let result = xsltProcess(doc, styleSheet);
     
+    console.log(result);
+
     res.end(result.toString());
 })      
 
